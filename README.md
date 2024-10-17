@@ -1,5 +1,7 @@
 # Google Voice Auto SMS
 
+<font color=red>(# 据说这种方法会被封号，请大家谨慎使用！！！)</font>
+
 本项目为Google Voice保号的Python脚本
 
 可用于青龙面板全自动化保号
