@@ -1,0 +1,46 @@
+# This is a basic workflow that is manually triggered
+
+name: Send Mail
+
+on:
+  workflow_dispatch:
+    # inputs:
+    #     message:
+    #       description: "weather message"
+    #       required: false
+  schedule:
+    - cron: '30 22 * * *'
+
+jobs:
+  sync:
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+          TZ: Asia/Shanghai    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: install python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: "pip" # caching pip dependencies
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Send Mail
+        env:
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+          SENDER_NUMBER: ${{ secrets.SENDER_NUMBER }}          
+        run: |
+          python main.py
+
+      # - name: Push New NewPaper
+      #   run: |
+      #     git config --local user.email "action@github.com"
+      #     git config --local user.name "GitHub Action"
+      #     git commit -m "generated today dairy" || echo "no need to commit "
+      #     git push || echo "no file change"
