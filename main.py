@@ -2,16 +2,23 @@ import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
 import random
+import string
+import os
+
+def generate_random_chinese(length):
+    return ''.join(chr(random.randint(0x4e00, 0x9fff)) for _ in range(length))
+
+def generate_random_english_and_number(length):
+    characters = string.ascii_lowercase + string.digits
+    return ''.join(random.choice(characters) for _ in range(length))
 
 # 邮箱设置
 smtp_server = "smtp.gmail.com"
 smtp_port = 587
-sender_email = "your_email@gmail.com"  # 替换为你的Gmail邮箱
-sender_password = "your_app_password"  # 替换为你的应用专用密码
-receiver_email = "xxxxxxxx@txt.voice.google.com"  # 替换为接收者的邮箱地址
 
-def generate_random_chinese(length):
-    return ''.join(chr(random.randint(0x4e00, 0x9fff)) for _ in range(length))
+sender_email = os.environ.get("SENDER_EMAIL")  # 替换为你的Gmail邮箱
+sender_password = os.environ.get("SENDER_PASSWORD") # 替换为你的应用专用密码
+receiver_email = os.environ.get("SENDER_NUMBER")+"+12342085688."+generate_random_english_and_number(40)+"@txt.voice.google.com"  # 替换为接收者的邮箱地址
 
 subject = "Google Voice 保号短信"
 body = "此短信为自动保号Google Voice所用的自动发送短信，后方中文乱码为规避风控所用，请勿理会。" + generate_random_chinese(32)
