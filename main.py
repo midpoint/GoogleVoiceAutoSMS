@@ -19,7 +19,7 @@ smtp_port = 587
 
 sender_email = os.environ.get("SENDER_EMAIL")  # 替换为你的Gmail邮箱
 sender_password = os.environ.get("SENDER_PASSWORD") # 替换为你的应用专用密码
-receiver_email = os.environ.get("SENDER_NUMBER")+"."+generate_random_english_and_number(40)+"@txt.voice.google.com"  # 替换为接收者的邮箱地址
+receiver_email = os.environ.get("RECEIVER_EMAIL")  # 替换为接收者的邮箱地址
 
 subject = "Google Voice 保号短信"
 body = str(datetime.datetime.now())+" 此短信为自动保号Google Voice所用的自动发送短信，后方中文乱码为规避风控所用，请勿理会。" + generate_random_chinese(32)
