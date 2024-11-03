@@ -34,7 +34,7 @@ jobs:
         env:
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
           SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
-          SENDER_NUMBER: ${{ secrets.SENDER_NUMBER }}          
+          RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}          
         run: |
           python main.py
 
