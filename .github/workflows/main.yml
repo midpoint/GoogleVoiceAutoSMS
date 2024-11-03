@@ -8,8 +8,8 @@ on:
     #     message:
     #       description: "weather message"
     #       required: false
-  schedule:
-    - cron: '30 22 1 * *'
+  # schedule:
+    # - cron: '30 22 1 * *'
 
 jobs:
   sync:
