@@ -3,6 +3,7 @@ from email.mime.text import MIMEText
 from email.header import Header
 import random
 import string
+import datetime
 import os
 
 def generate_random_chinese(length):
@@ -21,7 +22,7 @@ sender_password = os.environ.get("SENDER_PASSWORD") # 替换为你的应用专�
 receiver_email = os.environ.get("SENDER_NUMBER")+"."+generate_random_english_and_number(40)+"@txt.voice.google.com"  # 替换为接收者的邮箱地址
 
 subject = "Google Voice 保号短信"
-body = "此短信为自动保号Google Voice所用的自动发送短信，后方中文乱码为规避风控所用，请勿理会。" + generate_random_chinese(32)
+body = str(datetime.datetime.now())+" 此短信为自动保号Google Voice所用的自动发送短信，后方中文乱码为规避风控所用，请勿理会。" + generate_random_chinese(32)
 message = MIMEText(body, 'plain', 'utf-8')
 message['Subject'] = Header(subject, 'utf-8')
 message['From'] = sender_email
