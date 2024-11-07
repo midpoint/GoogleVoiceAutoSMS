@@ -1,10 +1,19 @@
+'''
+定时自定义
+0 0 1 * * main.py
+new Env('GV 保号');
+'''# 
+#  GV 保号
+# 
+
+
 import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
-import random
+导入 随机
 import string
 import datetime
-import os
+导入 操作系统
 
 def generate_random_chinese(length):
     return ''.join(chr(random.randint(0x4e00, 0x9fff)) for _ in range(length))
