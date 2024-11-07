@@ -6,6 +6,11 @@
 
 可用于青龙面板全自动化保号
 
+需要三个环境变量：
+SENDER_EMAIL 你的Gmail邮箱
+SENDER_PASSWORD" 你的应用专用密码
+RECEIVER_EMAIL  接收者的邮箱地址
+
 # 使用方法
 
 首先使用需要保号的Google Voice收一条短信，此时打开Gmail可以看到关于这条短信的一封邮件
